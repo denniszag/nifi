@@ -1,0 +1,116 @@
+package org.apache.nifi.processors.network.parser.v9;
+
+public enum NetflowFieldType {
+        UNKNOWN_FIELD_TYPE(0, 0),
+        IN_BYTES(1, -1),
+        IN_PKTS(2, -1),
+        FLOWS(3,-1),
+        PROTOCOL(4, 1),
+        SRC_TOS(5, 1),
+        TCP_FLAGS(6, 1),
+        L4_SRC_PORT(7, 2),
+        IPV4_SRC_ADDR(8, 4),
+        SRC_MASK(9, 1),
+        INPUT_SNMP(10,-1),
+        L4_DST_PORT(11, 2),
+        IPV4_DST_ADDR(12, 4),
+        DST_MASK(13, 1),
+        OUTPUT_SNMP(14,-1),
+        IPV4_NEXT_HOP(15, 4),
+        SRC_AS(16, -1),
+        DST_AS(17, -1),
+        BGP_IPV4_NEXT_HOP(18, 4),
+        MUL_DST_PKTS(19, -1),
+        MUL_DST_BYTES(20, -1),
+        LAST_SWITCHED(21, 4),
+        FIRST_SWITCHED(22, 4),
+        OUT_BYTES(23, -1),
+        OUT_PKTS(24, -1),
+        MIN_PKT_LNGTH(25, 2),
+        MAX_PKT_LNGTH(26, 2),
+        IPV6_SRC_ADDR(27, 16),
+        IPV6_DST_ADDR(28, 16),
+        IPV6_SRC_MASK(29, 1),
+        IPV6_DST_MASK(30, 1),
+        IPV6_FLOW_LABEL(31, 3),
+        ICMP_TYPE(32, 2),
+        MUL_IGMP_TYPE(33, 1),
+        SAMPLING_INTERVAL(34, 4),
+        SAMPLING_ALGORITHM(35, 1),
+        FLOW_ACTIVE_TIMEOUT(36, 2),
+        FLOW_INACTIVE_TIMEOUT(37, 2),
+        ENGINE_TYPE(38, 1),
+        ENGINE_ID(39, 1),
+        TOTAL_BYTES_EXP(40, -1),
+        TOTAL_PKTS_EXP(41, -1),
+        TOTAL_FLOWS_EXP(42, -1),
+        IPV4_SRC_PREFIX(44, 4),
+        IPV4_DST_PREFIX(45, 4),
+        MPLS_TOP_LABEL_TYPE(46, 1),
+        MPLS_TOP_LABEL_IP_ADDR(47, 4),
+        FLOW_SAMPLER_ID(48, 1),
+        FLOW_SAMPLER_MODE(49, 1),
+        FLOW_SAMPLER_RANDOM_INTERVAL(50, 4),
+        MIN_TTL(52, 1),
+        MAX_TTL(53, 1),
+        IPV4_IDENT(54, 2),
+        DST_TOS(55, 1),
+        IN_SRC_MAC(56, 6),
+        OUT_DST_MAC(57, 6),
+        SRC_VLAN(58, 2),
+        DST_VLAN(59, 2),
+        IP_PROTOCOL_VERSION(60, 1),
+        DIRECTION(61, 1),
+        IPV6_NEXT_HOP(62, 16),
+        BPG_IPV6_NEXT_HOP(63, 16),
+        IPV6_OPTION_HEADERS(64, 4),
+        MPLS_LABEL_1(70, 3),
+        MPLS_LABEL_2(71, 3),
+        MPLS_LABEL_3(72, 3),
+        MPLS_LABEL_4(73, 3),
+        MPLS_LABEL_5(74, 3),
+        MPLS_LABEL_6(75, 3),
+        MPLS_LABEL_7(76, 3),
+        MPLS_LABEL_8(77, 3),
+        MPLS_LABEL_9(78, 3),
+        MPLS_LABEL_10(79, 3),
+        IN_DST_MAC(80, 6),
+        OUT_SRC_MAC(81, 6),
+        IF_NAME(82, -1),
+        IF_DESC(83, -1),
+        SAMPLER_NAME(84, -1),
+        IN_PERMANENT_BYTES(85, -1),
+        IN_PERMANENT_PKTS(86, -1),
+        FRAGMENT_OFFSET(88, 2),
+        FORWARDING_STATUS(89, 1),
+        MPLS_PAL_RD(90, 8),
+        MPLS_PREFIX_LEN(91, 1),
+        SRC_TRAFFIC_INDEX(92, 4),
+        DST_TRAFFIC_INDEX(93, 4),
+        APPLICATION_DESCRIPTION(94,-1),
+        APPLICATION_TAG(95, -1),
+        APPLICATION_NAME(96,-1),
+        postipDiffServCodePoint(98, 1),
+        replication_factor(99, 4),
+        DEPRECATED(100,-1),
+        layer2packetSectionOffset(102, -1),
+        layer2packetSectionSize(103, -1),
+        layer2packetSectionData(104, -1);
+
+        public int value;
+        public int length;
+
+        NetflowFieldType(int value, int length) {
+                this.value = value;
+                this.length = length;
+        }
+
+        public static NetflowFieldType getByValue(int value){
+                for(NetflowFieldType f : values()){
+                        if( f.value == value) {
+                                return f;
+                        }
+                }
+                return null;
+        }
+}
